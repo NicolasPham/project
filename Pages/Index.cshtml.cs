@@ -11,6 +11,7 @@ public class IndexModel : PageModel
     public List<string> overview = new List<string>();
     public List<string> movieIDs = new List<string>();
     public PosterSet posterSet2 = new PosterSet();
+
     public async Task OnGet()
     {
         await Fetch.GetTrends();
@@ -18,9 +19,13 @@ public class IndexModel : PageModel
         foreach(Poster poster in posterSet2.results) {
             movieTitles.Add(poster.title);
             posterURLs.Add(path + poster.poster_path);
-            overview.Add(poster.overview);
+            overview.Add(poster.overview.Substring(0, 50) + "...");
             movieIDs.Add(poster.id.ToString());
 
         }
     } //OnGet();
+
+    public void OnPostDetails (string movieID) {
+        Response.Redirect("./Moview?_id=" + movieID);
+    }
 } //class
