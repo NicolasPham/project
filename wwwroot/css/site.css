@@ -56,3 +56,47 @@ input {
   height: 100%;
   opacity: 0;
 }
+
+/* --------------- Movie page --------------- */
+.movie {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+.movie_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: .1;
+  object-fit: cover;
+}
+
+.movie_details {
+  max-width: 20%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+
+.movie_poster {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.movie_title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.movie_date {
+  font-size: 14px;
+  font-weight: normal;
+  color: rgb(153, 149, 149);
+}
+
+.movie_overview {
+  text-align: justify;
+}

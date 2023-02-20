@@ -26,6 +26,6 @@ public class IndexModel : PageModel
     } //OnGet();
 
     public void OnPostDetails (string movieID) {
-        Response.Redirect("./Moview?_id=" + movieID);
+        Response.Redirect("./Movie?movieID=" + movieID);
     }
 } //class

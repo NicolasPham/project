@@ -7,6 +7,7 @@ public static class Fetch {
     public static HttpClient client = new HttpClient();
     public static string Data { get; set; }
     public static PosterSet posterSet = new PosterSet();
+    public static Movie movie = new Movie();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -21,6 +22,21 @@ public static class Fetch {
         if (response.IsSuccessStatusCode) {
             Data = await response.Content.ReadAsStringAsync();
             posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        } else {
+            Data = null;
+        }
+    }
+
+    public static async Task GetDetails(string movieID) {
+        ClearHeader();
+        HttpResponseMessage response = await client.GetAsync(
+        // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+        "https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + API_KEY + "&language=en-US"
+        );
+
+        if (response.IsSuccessStatusCode) {
+            Data = await response.Content.ReadAsStringAsync();
+            movie = JsonSerializer.Deserialize<Movie>(Data);
         } else {
             Data = null;
         }

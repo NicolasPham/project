@@ -1,0 +1,13 @@
+@page
+@model MovieModel
+
+<div class="movie">
+    <img class="movie_background" src="@Model.backdrop_path" alt="">
+    <div class="movie_details">
+        <img class="movie_poster" src="@Model.poster_path" alt="">
+        <h1 class="movie_title">@Model.title</h1> 
+        <h2 class="movie_date">Released Date: @Model.release_date</h2>
+        <p class="movie_overview">Overview: </p> 
+        <p class="movie_overview">@Model.overview</p>
+    </div>
+</div>
