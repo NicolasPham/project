@@ -6,8 +6,10 @@ namespace project.API;
 public static class Fetch {
     public static HttpClient client = new HttpClient();
     public static string Data { get; set; }
+    public static string CreditData {get; set;}
     public static PosterSet posterSet = new PosterSet();
     public static Movie movie = new Movie();
+    public static Credits credits = new Credits();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -37,6 +39,19 @@ public static class Fetch {
         if (response.IsSuccessStatusCode) {
             Data = await response.Content.ReadAsStringAsync();
             movie = JsonSerializer.Deserialize<Movie>(Data);
+        } else {
+            Data = null;
+        }
+
+        HttpResponseMessage creditResponse = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+            "https://api.themoviedb.org/3/movie/" + movieID + "/credits?api_key=" + API_KEY + "&language=en-US"
+        );
+
+        if (creditResponse.IsSuccessStatusCode) {
+            Data = await creditResponse.Content.ReadAsStringAsync();
+            // credits = JsonSerializer.Deserialize<>
+            credits = JsonSerializer.Deserialize<Credits>(Data);
         } else {
             Data = null;
         }
