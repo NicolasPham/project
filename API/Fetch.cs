@@ -7,9 +7,11 @@ public static class Fetch {
     public static HttpClient client = new HttpClient();
     public static string Data { get; set; }
     public static string CreditData {get; set;}
+
     public static PosterSet posterSet = new PosterSet();
     public static Movie movie = new Movie();
     public static Credits credits = new Credits();
+    public static CastDetail castDetail = new CastDetail();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -27,7 +29,7 @@ public static class Fetch {
         } else {
             Data = null;
         }
-    }
+    } //Get trends
 
     public static async Task GetDetails(string movieID) {
         ClearHeader();
@@ -55,7 +57,20 @@ public static class Fetch {
         } else {
             Data = null;
         }
+    }//get Movie Details
+
+    public static async Task GetCastDetails(int castID) {
+        ClearHeader();
+        HttpResponseMessage castResponse = await client.GetAsync(
+            //https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US
+            "https://api.themoviedb.org/3/person/" + castID + "?api_key=" + API_KEY + "&language=en-US"
+        );
+        if (castResponse.IsSuccessStatusCode) {
+            Data = await castResponse.Content.ReadAsStringAsync();
+            castDetail = JsonSerializer.Deserialize<CastDetail>(Data);
+        }
     }
+
 
 
     private static void ClearHeader() {

@@ -3,10 +3,24 @@
 
 <div class="movie">
     <img class="movie_background" src="@Model.backdrop_path" alt="">
-    <div class="movie_details">
-        <img class="movie_poster" src="@Model.poster_path" alt="">
-        <h1 class="movie_title">@Model.title</h1> 
-        <h2 class="movie_date">Released Date: @Model.release_date</h2>
-        <p class="movie_overview">@Model.overview</p>
+    <div class="wrapper">
+        <div class="movie_details">
+            <img class="movie_poster" src="@Model.poster_path" alt="">
+            <h1 class="movie_title">@Model.title</h1> 
+            <h2 class="movie_date">Released Date: @Model.release_date</h2>
+            <p class="movie_overview">@Model.overview</p>
+        </div>
+        <div class="video">
+
+        </div>
+    </div>
+    <div class="movie_cast">
+        @for (int i = 0; i < Model.CAST_COUNT; i++) {
+            <form class="movie_cast_form" asp-page-handler="CastDetail">
+                <img class="movie_cast_profile" src="@Model.castProfiles[i]"/>
+                <span class="movie_cast_name">@Model.castNames[i]</span>
+                <input class="movie_cast_input" type="submit" name="castID" value=@Model.castIDs[i]>
+            </form>
+        }
     </div>
 </div>

@@ -63,6 +63,8 @@ input {
   height: 100vh;
   position: relative;
   display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .movie_background {
@@ -99,4 +101,43 @@ input {
 
 .movie_overview {
   text-align: justify;
+}
+
+.movie_cast {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  margin: 20px 50px;
+}
+
+.movie_cast_form {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  position: relative;
+}
+
+.movie_cast_profile {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  
+}
+
+.movie_cast_name {
+  color: rgba(241, 225, 169, 0.808);
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+  bottom: -10px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.movie_cast_input {
+  background-color: cyan;
+  position: absolute;
 }

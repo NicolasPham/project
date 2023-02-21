@@ -18660,6 +18660,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\Pages\\Cast.cshtml",
+      "TargetPath": "Pages\\Cast.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\Pages\\Shared\\_Layout.cshtml",
       "TargetPath": "Pages\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
