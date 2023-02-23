@@ -12,6 +12,7 @@ public static class Fetch {
     public static Movie movie = new Movie();
     public static Credits credits = new Credits();
     public static CastDetail castDetail = new CastDetail();
+    public static Video videos = new Video();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -41,10 +42,12 @@ public static class Fetch {
         if (response.IsSuccessStatusCode) {
             Data = await response.Content.ReadAsStringAsync();
             movie = JsonSerializer.Deserialize<Movie>(Data);
+            //budget, genres[], revenue
         } else {
             Data = null;
         }
 
+        // Get Casts and Crews
         HttpResponseMessage creditResponse = await client.GetAsync(
             //https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
             "https://api.themoviedb.org/3/movie/" + movieID + "/credits?api_key=" + API_KEY + "&language=en-US"
@@ -54,6 +57,19 @@ public static class Fetch {
             Data = await creditResponse.Content.ReadAsStringAsync();
             // credits = JsonSerializer.Deserialize<>
             credits = JsonSerializer.Deserialize<Credits>(Data);
+        } else {
+            Data = null;
+        }
+
+        //Get Videos
+        HttpResponseMessage VideoResponse = await client.GetAsync(
+            // /https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
+            "https://api.themoviedb.org/3/movie/"+ movieID +"/videos?api_key=" + API_KEY + "&language=en-US"
+        );
+        
+        if (VideoResponse.IsSuccessStatusCode) {
+            Data = await VideoResponse.Content.ReadAsStringAsync();
+            videos = JsonSerializer.Deserialize<Video>(Data);
         } else {
             Data = null;
         }
@@ -70,7 +86,6 @@ public static class Fetch {
             castDetail = JsonSerializer.Deserialize<CastDetail>(Data);
         }
     }
-
 
 
     private static void ClearHeader() {

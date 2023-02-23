@@ -5,13 +5,34 @@
     <img class="movie_background" src="@Model.backdrop_path" alt="">
     <div class="wrapper">
         <div class="movie_details">
-            <img class="movie_poster" src="@Model.poster_path" alt="">
             <h1 class="movie_title">@Model.title</h1> 
-            <h2 class="movie_date">Released Date: @Model.release_date</h2>
-            <p class="movie_overview">@Model.overview</p>
+            <img class="movie_poster" src="@Model.poster_path" alt="">
         </div>
-        <div class="video">
 
+        <div class="movie_info">
+            <h2 class="title">RELEASED DATE</h2>
+            <p class="desc">@Model.release_date</p>
+            <h2 class="title">BUDGET</h2>
+            <p class="desc">@Model.budget</p>
+            <h2 class="title">REVENUE</h2>
+            <p class="desc">@Model.revenue</p>
+            <h2 class="title">OVERVIEW</h2>
+            <p class="desc">@Model.overview</p>
+
+        </div>
+
+        <div class="movie_videos">
+            <select id="video_DDL" class="movie_select" name="youtubeDDL" title="Select a video to play" onchange="switchVideo(this.value)">
+                @for (int i=0; i < @Model.videoNames.Count; i++) {
+                    <option class="movie_option" value="@Model.videoURLs[i]" selected>
+                        @Model.videoNames[i]
+                    </option>
+                }
+            </select>
+
+            <iframe id="videoName" class="movie_video" width="800" height="530"
+                src="@Model.videoURLs[0]" controls="1">
+            </iframe>
         </div>
     </div>
     <div class="movie_cast">
