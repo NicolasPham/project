@@ -222,3 +222,58 @@ input {
   background-color: cyan;
   position: absolute;
 }
+
+/* --------------- CAST page --------------- */
+.cast_wrapper {
+  margin: 40px 120px;
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  gap: 40px;
+}
+.cast_title{
+  flex: .8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info {
+  flex: 1;
+  
+}
+.cast_imges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 2;
+  overflow: auto;
+  max-height: 700px;
+}
+
+.info_img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.info_name {
+  color: rgb(134, 180, 248);
+}
+
+.info_desc {
+  color: white;
+  text-align: justify;
+}
+
+.paragraph {
+  max-height: 500px;
+  overflow: auto;
+  padding-right: 20px;
+}
+
+.cast_img {
+  height: 200px;
+  border-radius: 5px;
+}
+b {
+  color: rgb(134, 180, 248);
+}

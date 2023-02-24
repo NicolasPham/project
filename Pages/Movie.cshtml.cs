@@ -31,8 +31,18 @@ public class MovieModel : PageModel
         backdrop_path = "https://image.tmdb.org/t/p/original" + Fetch.movie.backdrop_path;
         overview = Fetch.movie.overview;
         release_date = Fetch.movie.release_date;
+
+        if (Fetch.movie.budget != 0) {
         budget = Fetch.movie.budget.ToString("C0");
+        } else {
+            budget = "Unknown";
+        }
+        
+        if (Fetch.movie.revenue != 0) {
         revenue = Fetch.movie.revenue.ToString("C0");
+        } else {
+            revenue = "Unknown";
+        }
 
         //Credits:
         if (Fetch.credits.cast.Count >= 10) {

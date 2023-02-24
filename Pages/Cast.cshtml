@@ -1,2 +1,23 @@
 @page
 @model CastModel
+
+
+<div class="cast_wrapper">
+    <div class="cast_title">
+        <h2 class="info_name">@Model.castName</h2>
+        <p class="info_desc">Age: @Model.age years old</P>
+        <img class="info_img" src="@Model.castProfile" alt="">
+    </div>
+
+    <div class="info">
+        <p class="info_desc">Birthday: <b>@Model.castBirth</b></p>
+        <p class="info_desc">Place of Birth: <b>@Model.castPlaceOfBirth</b></p>
+        <p class="info_desc paragraph">@Model.castBiography</p>
+    </div>
+    
+    <div class="cast_imges">
+        @for (int i = 1; i < Model.castPhotos.Count; i++) {
+            <img class="cast_img" src="@Model.castPhotos[i]"/>
+        }
+    </div>
+</div>

@@ -13,6 +13,8 @@ public static class Fetch {
     public static Credits credits = new Credits();
     public static CastDetail castDetail = new CastDetail();
     public static Video videos = new Video();
+
+    public static CastPhoto castPhoto = new CastPhoto();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -84,7 +86,16 @@ public static class Fetch {
         if (castResponse.IsSuccessStatusCode) {
             Data = await castResponse.Content.ReadAsStringAsync();
             castDetail = JsonSerializer.Deserialize<CastDetail>(Data);
+        }//Get cast info
+
+        HttpResponseMessage castPhotoResponse = await client.GetAsync(
+            "https://api.themoviedb.org/3/person/"+ castID + "/images?api_key=" + API_KEY
+        );
+        if (castPhotoResponse.IsSuccessStatusCode) {
+            Data = await castPhotoResponse.Content.ReadAsStringAsync();
+            castPhoto = JsonSerializer.Deserialize<CastPhoto>(Data);
         }
+
     }
 
 

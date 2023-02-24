@@ -22,25 +22,27 @@
         </div>
 
         <div class="movie_videos">
+            @if(Model.videoURLs.Count > 0) {
             <select id="video_DDL" class="movie_select" name="youtubeDDL" title="Select a video to play" onchange="switchVideo(this.value)">
-                @for (int i=0; i < @Model.videoNames.Count; i++) {
+                @for (int i=0; i < @Model.videoURLs.Count-1; i++) {
                     <option class="movie_option" value="@Model.videoURLs[i]" selected>
                         @Model.videoNames[i]
                     </option>
                 }
             </select>
 
-            <iframe id="videoName" class="movie_video" width="800" height="530"
-                src="@Model.videoURLs[0]" controls="1">
+            <iframe id="videoName" class="movie_video" width="800px" height="530px"
+                src="@Model.videoURLs[0]">
             </iframe>
+            }
         </div>
     </div>
     <div class="movie_cast">
         @for (int i = 0; i < Model.CAST_COUNT; i++) {
-            <form class="movie_cast_form" asp-page-handler="CastDetail">
+            <form class="movie_cast_form" method="POST" asp-page-handler="CastDetail">
                 <img class="movie_cast_profile" src="@Model.castProfiles[i]"/>
                 <span class="movie_cast_name">@Model.castNames[i]</span>
-                <input class="movie_cast_input" type="submit" name="castID" value=@Model.castIDs[i]>
+                <input class="movie_cast_input" type="submit" name="castID" value="@Model.castIDs[i]">
             </form>
         }
     </div>
