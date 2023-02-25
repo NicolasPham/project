@@ -1,6 +1,24 @@
 ﻿@page
 @model IndexModel
 
+<div class="IndexBtnWrapper">
+    <form  method="POST" asp-page-handler="Trending">
+        <input class="indexBtn" type="submit" value="Trending">
+    </form>
+    <form method="POST" asp-page-handler="NowPlaying">
+        <input class="indexBtn" type="submit" value="Now Playing">
+    </form>
+    <form method="POST" asp-page-handler="TopRated">
+        <input class="indexBtn" type="submit" value="Top Rated">
+    </form>
+    <form ethod="POST" asp-page-handler="UpComing">
+        <input class="indexBtn" type="submit" value="Upcoming">
+    </form>
+    <form method="POST" asp-page-handler="Lastest">
+        <input class="indexBtn" type="submit" value="Lastest" disabled>
+    </form>
+</div>
+
 
     <div class="card_wrapper">
 @for(int i = 0; i < Model.movieTitles.Count; i++) {

@@ -45,6 +45,56 @@ public class IndexModel : PageModel
         }
     }
 
+    // HOMEPAGE BUTTON
+    public async Task OnPostTrending() {
+        await OnGet();
+    }
+
+    public async Task OnPostNowPlaying() {
+        await Fetch.GetNowPlaying();
+        posterSet2 = Fetch.posterSet;
+        foreach(Poster poster in posterSet2.results) {
+            movieTitles.Add(poster.title);
+            posterURLs.Add(path + poster.poster_path);
+            overview.Add(poster.overview.Substring(0, 50) + "...");
+            movieIDs.Add(poster.id.ToString());
+        }
+
+    }
+    public async Task OnPostTopRated() {
+        await Fetch.GetTopRated();
+        posterSet2 = Fetch.posterSet;
+        foreach(Poster poster in posterSet2.results) {
+            movieTitles.Add(poster.title);
+            posterURLs.Add(path + poster.poster_path);
+            overview.Add(poster.overview.Substring(0, 50) + "...");
+            movieIDs.Add(poster.id.ToString());
+        }
+
+    }
+    public async Task OnPostUpComing() {
+        await Fetch.GetUpComing();
+        posterSet2 = Fetch.posterSet;
+        foreach(Poster poster in posterSet2.results) {
+            movieTitles.Add(poster.title);
+            posterURLs.Add(path + poster.poster_path);
+            overview.Add(poster.overview.Substring(0, 50) + "...");
+            movieIDs.Add(poster.id.ToString());
+        }
+
+    }
+    public async Task OnPostLastest() {
+        await Fetch.GetLastest();
+        posterSet2 = Fetch.posterSet;
+        foreach(Poster poster in posterSet2.results) {
+            movieTitles.Add(poster.title);
+            posterURLs.Add(path + poster.poster_path);
+            overview.Add(poster.overview.Substring(0, 50) + "...");
+            movieIDs.Add(poster.id.ToString());
+        }
+
+    }
+
     public void OnPostDetails (string movieID) {
         Response.Redirect("./Movie?movieID=" + movieID);
     }

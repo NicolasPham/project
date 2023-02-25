@@ -35,6 +35,63 @@ public static class Fetch {
         }
     } //Get trends
 
+    public static async Task GetNowPlaying() {
+        ClearHeader();
+        HttpResponseMessage nowPlayingResponse = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=en-US&page=1
+            "https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY + "&language=en-US&page=1"    
+        );
+        if (nowPlayingResponse.IsSuccessStatusCode) {
+            Data = await nowPlayingResponse.Content.ReadAsStringAsync();
+            posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        } else {
+            Data = null;
+        }
+    } // getNowPlaying
+
+    public static async Task GetTopRated() {
+        ClearHeader();
+        HttpResponseMessage response = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1
+            "https://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY + "&language=en-US&page=1"    
+        );
+        if (response.IsSuccessStatusCode) {
+            Data = await response.Content.ReadAsStringAsync();
+            posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        } else {
+            Data = null;
+        }
+    } // getNowPlaying ---
+
+    public static async Task GetUpComing() {
+        ClearHeader();
+        HttpResponseMessage response = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>&language=en-US&page=1
+            "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY + "&language=en-US&page=1"    
+        );
+        if (response.IsSuccessStatusCode) {
+            Data = await response.Content.ReadAsStringAsync();
+            posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        } else {
+            Data = null;
+        }
+    } // getUpComing
+
+    public static async Task GetLastest() {
+        ClearHeader();
+        HttpResponseMessage response = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US
+            "https://api.themoviedb.org/3/movie/latest?api_key=" + API_KEY + "&language=en-US&page=1"    
+        );
+        if (response.IsSuccessStatusCode) {
+            Data = await response.Content.ReadAsStringAsync();
+            posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        } else {
+            Data = null;
+        }
+    } // getLastest
+
+        /**********************************************/
     public static async Task GetDetails(string movieID) {
         ClearHeader();
         HttpResponseMessage response = await client.GetAsync(
@@ -110,10 +167,10 @@ public static class Fetch {
             Data = await searchMovie.Content.ReadAsStringAsync();
             searchResult = JsonSerializer.Deserialize<Search>(Data);
         }
-    }
+    }//getSearchResult
 
 
-    private static void ClearHeader() {
+    public static void ClearHeader() {
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("applicationException/json"));
     }
