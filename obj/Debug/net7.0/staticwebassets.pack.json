@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\project.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\wwwroot\\assets\\navbarBackground.jpg",
+      "PackagePath": "staticwebassets\\assets\\navbarBackground.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

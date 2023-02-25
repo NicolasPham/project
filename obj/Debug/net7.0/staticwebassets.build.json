@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PeGgqBAu+wj41/G3iP4lsb1Fv3HtphanfqMKHjyQB8Y=",
+  "Hash": "S8qy0hUO6cdaRxFEukhnfHDQ4Kp3zBdMtzwdT48s02Y=",
   "Source": "project",
   "BasePath": "_content/project",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\project.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\wwwroot\\assets\\navbarBackground.jpg",
+      "SourceId": "project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\wwwroot\\",
+      "BasePath": "_content/project",
+      "RelativePath": "assets/navbarBackground.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\navbarBackground.jpg"
     },
     {
       "Identity": "C:\\Users\\Nicolas\\Desktop\\triOS\\Csharp\\project\\wwwroot\\css\\site.css",

@@ -15,6 +15,7 @@ public static class Fetch {
     public static Video videos = new Video();
 
     public static CastPhoto castPhoto = new CastPhoto();
+    public static Search searchResult = new Search();
     public const string API_KEY = "d194eb72915bc79fac2eb1a70a71ddd3";
 
 
@@ -96,6 +97,19 @@ public static class Fetch {
             castPhoto = JsonSerializer.Deserialize<CastPhoto>(Data);
         }
 
+    }//getCastDetail
+
+    public static async Task GetSearch(string search) {
+        ClearHeader();
+        HttpResponseMessage searchMovie = await client.GetAsync(
+          //https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+        "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&language=en-US&page=1&include_adult=false&query=" + search
+        );
+
+        if (searchMovie.IsSuccessStatusCode) {
+            Data = await searchMovie.Content.ReadAsStringAsync();
+            searchResult = JsonSerializer.Deserialize<Search>(Data);
+        }
     }
 
 

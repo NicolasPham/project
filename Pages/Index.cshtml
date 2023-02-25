@@ -1,11 +1,12 @@
 ﻿@page
 @model IndexModel
 
+
     <div class="card_wrapper">
 @for(int i = 0; i < Model.movieTitles.Count; i++) {
     <div class="card" name="">
         <form method="POST" asp-page-handler="Details">
-            <input type="submit" name="movieID" value="@Model.movieIDs[i]">
+            <input class="movieCard" type="submit" name="movieID" value="@Model.movieIDs[i]">
             <img class="card_img" src=@Model.posterURLs[i]  />
             <div class="card_details">
                 <h3 class="card_title">@Model.movieTitles[i]</h3>

@@ -10,11 +10,14 @@
 </head>
 <body>
     <header>
-
-        <img class="nav_background" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+        <img class="nav_background" src="./assets/navbarBackground.jpg" alt="">
         <a href="/">
         <img class="nav_logo" src="https://philosophy.utoronto.ca/wp-content/uploads/kisspng-art-film-logo-cinema-clip-art-movie-logo-cliparts-5ab587fb1000c4.1651552415218462670656.jpg" alt="">
         </a>
+        <form method="POST" class="searchForm" asp-page-handler="Search" asp-page="/Index">
+            <input type="text" name="searchInput" id="searchInput" placeholder="Type the movie you want to search...">
+            <input type="submit" id="searchBtn" value="Search">
+        </form>
     </header>
     <div>
         <main>

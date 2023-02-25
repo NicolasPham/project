@@ -54,7 +54,12 @@ public class MovieModel : PageModel
         for (int i = 0; i < CAST_COUNT; i++) {
             castIDs.Add(Fetch.credits.cast[i].id);  
             castNames.Add(Fetch.credits.cast[i].name);
-            castProfiles.Add("https://image.tmdb.org/t/p/w500" + Fetch.credits.cast[i].profile_path);
+
+            if (Fetch.credits.cast[i].profile_path is null) {
+                castProfiles.Add("https://www.shutterstock.com/image-illustration/male-profile-picture-silhouette-avatar-260nw-148961501.jpg");
+            } else {
+                castProfiles.Add("https://image.tmdb.org/t/p/w500" + Fetch.credits.cast[i].profile_path);
+            }
         }
 
         //Videos

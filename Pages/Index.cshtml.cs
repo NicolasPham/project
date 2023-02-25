@@ -21,9 +21,29 @@ public class IndexModel : PageModel
             posterURLs.Add(path + poster.poster_path);
             overview.Add(poster.overview.Substring(0, 50) + "...");
             movieIDs.Add(poster.id.ToString());
-
         }
     } //OnGet();
+
+    public async Task OnPostSearch(string searchInput) {
+        await Fetch.GetSearch(searchInput);
+        foreach(SearchResult poster in Fetch.searchResult.results) {
+            movieTitles.Add(poster.title);
+            if (poster.poster_path is not null && poster.overview is not null) {
+                posterURLs.Add(path + poster.poster_path);
+
+                if (poster.overview.Length > 50) {
+                overview.Add(poster.overview.Substring(0, 50) + "...");
+                } else {
+                overview.Add(poster.overview.Substring(0, poster.overview.Length) + "...");
+                }
+            } else {
+                overview.Add("...");
+                posterURLs.Add("https://www.etsy.com/img/8515241/r/il/6f8376/519356130/il_570xN.519356130_dq2v.jpg");
+
+            }
+            movieIDs.Add(poster.id.ToString());
+        }
+    }
 
     public void OnPostDetails (string movieID) {
         Response.Redirect("./Movie?movieID=" + movieID);

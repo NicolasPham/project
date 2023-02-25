@@ -1,15 +1,24 @@
+:root {
+  --primaryColor: rgb(104, 104, 247);
+  --lightGray: #333;
+  --darkGray: #111;
+}
+
+
 * {
   margin: 0;
   padding: 0;
+
 }
 
 body {
-  background-color: #222;
+  background-color: var(--lightGray);
 }
 
 /* --------------- Navbar--------------- */
 header {
   height: 150px;
+  display: flex;
   position: relative;
 }
 
@@ -18,7 +27,7 @@ header {
   height: 100%;
   object-fit: cover;
   position: absolute;
-  z-index: 0;
+  z-index: -1;
 }
 
 .nav_logo {
@@ -31,6 +40,38 @@ header {
   top: 20px;
   left: 120px;
 }
+
+.searchForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  bottom: -30px;
+}
+
+#searchInput {
+  font-size: 24px;
+  color: white;
+  width: 50%;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--darkGray);
+  outline: none;
+  border-radius: 5px 0 0 5px;
+}
+
+#searchBtn {
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: 500;
+  border: none;
+  color: white;
+  background-color: rgb(104, 104, 247);
+  border-radius: 0 5px 5px 0;
+}
+
 /* --------------- Home page --------------- */
 .card_wrapper {
   display: flex;
@@ -51,7 +92,7 @@ header {
   gap: 10px;
   cursor: pointer;
   border: none;
-  box-shadow: 0px 0px 4px 4px rgb(104, 104, 247);
+  box-shadow: 0px 0px 4px 4px var(--primaryColor);
 }
 
 .card_img {
@@ -76,7 +117,7 @@ header {
   text-overflow: ellipsis;
 }
 
-input {
+.movieCard {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -219,8 +260,10 @@ input {
 }
 
 .movie_cast_input {
-  background-color: cyan;
   position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 /* --------------- CAST page --------------- */
