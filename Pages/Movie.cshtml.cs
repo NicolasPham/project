@@ -22,6 +22,13 @@ public class MovieModel : PageModel
     public List<string> videoURLs = new List<string>();
     public List<string> videoNames = new List<string>();
 
+    //similar Movies
+    public PosterSet posterSet = new PosterSet();
+    public List<string> movieTitles = new List<string>();
+    public List<string> posterURLs = new List<string>();
+    public List<string> movieIDs = new List<string>();
+    public string path = "https://image.tmdb.org/t/p/w500";
+
 
     public async Task OnGet(string movieID) {
         
@@ -67,10 +74,25 @@ public class MovieModel : PageModel
             videoURLs.Add("https://www.youtube.com/embed/" + Fetch.videos.results[i].key);
             videoNames.Add(Fetch.videos.results[i].name);
         }
+
+
+        //Similar Videos
+        await Fetch.GetSimilar(movieID);
+        posterSet = Fetch.posterSet;
+        foreach(Poster poster in posterSet.results) {
+            movieTitles.Add(poster.title);
+            posterURLs.Add(path + poster.poster_path);
+            movieIDs.Add(poster.id.ToString());
+        }
+
     } //OnGet()
 
     public void OnPostCastDetail(int castID) {
         Response.Redirect("./Cast?castID="+castID);
+    }
+
+    public void OnPostSimilar (string movieID) {
+        Response.Redirect("./Movie?movieID=" + movieID);
     }
 
 

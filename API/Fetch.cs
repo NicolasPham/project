@@ -169,6 +169,19 @@ public static class Fetch {
         }
     }//getSearchResult
 
+    public static async Task GetSimilar(string movieID) {
+        ClearHeader();
+        HttpResponseMessage response = await client.GetAsync(
+            //https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+            "https://api.themoviedb.org/3/movie/" + movieID + "/similar?api_key="+ API_KEY +"&language=en-US&page=1"
+        );
+
+        if (response.IsSuccessStatusCode) {
+            Data = await response.Content.ReadAsStringAsync();
+            posterSet = JsonSerializer.Deserialize<PosterSet>(Data);
+        }
+    }
+
 
     public static void ClearHeader() {
         client.DefaultRequestHeaders.Accept.Clear();
