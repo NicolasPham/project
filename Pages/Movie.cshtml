@@ -50,11 +50,13 @@
     <h1 class="recommend">Recommendations</h1>
     <div class="similar">
         @for(int i = 0; i < Model.movieTitles.Count; i++) {
-            <form class="similar_movie" method="POST" asp-page-handler="Similar">
-                <img class="similar_img" src="@Model.posterURLs[i]"/>
-                <p class="similar_title">@Model.movieTitles[i]</p>
-                <input class="similar_input" type="submit" value="@Model.movieIDs[i]" name="movieID">
-            </form>
+            @if(Model.posterURLs[i] is not null) {
+                <form class="similar_movie" method="POST" asp-page-handler="Similar">
+                    <img class="similar_img" src="@Model.posterURLs[i]"/>
+                    <p class="similar_title">@Model.movieTitles[i]</p>
+                    <input class="similar_input" type="submit" value="@Model.movieIDs[i]" name="movieID">
+                </form>
+            }
         } 
     </div>
 </div>

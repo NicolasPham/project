@@ -334,7 +334,7 @@ header {
 
 /* --------------- CAST page --------------- */
 .cast_wrapper {
-  margin: 40px 120px;
+  margin: 100px 120px 40px 120px;
   width: 100%;
   max-width: 1500px;
   display: flex;
